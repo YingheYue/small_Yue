@@ -1,5 +1,12 @@
+from codecs import utf_8_encode
+from encodings import utf_8, utf_8_sig
 import discord
 from discord.ext import commands
+import json
+
+with open('setting.json','r',encoding=utf_8) as jFile:
+    jdata = json.load(jFile)
+
 
 intents = discord.Intents.default()
 intents.members = True
@@ -24,4 +31,4 @@ async def on_member_remove(member):
 async def ping(ctx):
     await ctx.send(f'{round(bot.latency*1000)}(ms)')
 
-bot.run('OTAzNjc5MDk2MjkzMjk0MTQw.GTHSBu.lR8CCPZaLOwvTL9jsZVQ6SMktf-88OB4LSLW1c')
+    bot.run(jdata['TOKEN'])
